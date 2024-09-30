@@ -21,7 +21,6 @@
 
     <header class="header">
       <a href="#" class="logo">Portafolio</a>
-      <i class="bx bx-menu" id="menu-icon"></i>
       <nav class="navbar">
         <a href="#home" class="active">Home</a>
         <a href="#about">About</a>
@@ -30,6 +29,24 @@
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
       </nav>
+      <label for="theme-toggle" class="switch-label">
+        <!-- Icono para el modo claro (sol) -->
+         <a id="theme-light-icon">
+          <img src="/images/Icon/sun.png" alt="">
+         </a>
+        <!-- Switch -->
+        <input id="theme-toggle" type="checkbox" class="sr-only" />
+        <div class="switch-container">
+            <div class="switch-background"></div>
+            <div class="switch-indicator" id="switch-indicator"></div>
+        </div>
+    
+        <!-- Icono para el modo oscuro (luna) -->
+         <a id="theme-dark-icon">
+          <img style="padding-left: 8px;" src="/images/Icon/moon.png" alt="">
+         </a>
+         
+    </label>
     </header>
 
     <!-- home section design -->

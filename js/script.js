@@ -1,11 +1,39 @@
 /*==================== toggle icon navbar ====================*/
-let menuIcon = document.querySelector('#menu-icon');
+let menuIcon = document.querySelector('.menu-icon');
 let navbar = document.querySelector('.navbar');
 
 
 /*==================== scroll sections active link ====================*/
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
+
+/* Theme Dark */
+
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Guardar la preferencia del tema en localStorage
+themeToggle.addEventListener('change', () => {
+    if (themeToggle.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Mantener la preferencia del tema cuando recargue la página
+window.addEventListener('load', () => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+        themeToggle.checked = true;
+        body.classList.add('dark-mode');
+    } else {
+        themeToggle.checked = false;
+        body.classList.remove('dark-mode');
+    }
+});
 
 window.onscroll = () => {
 

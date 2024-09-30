@@ -12,10 +12,20 @@
 }
 
 :root {
+  --bg-color: #d1dbed;
+  --second-bg-color: #4368ae;
+  --text-color: #0a0000;
+  --main-color: rgb(41, 151, 235);
+  --color-text-botton:#fff;
+}
+
+/* Colores para el modo oscuro */
+body.dark-mode {
   --bg-color: #1f242d;
   --second-bg-color: #323946;
   --text-color: #fff;
   --main-color: #0ef;
+  --color-text-botton:#000;
 }
 
 html {
@@ -42,6 +52,7 @@ section {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  box-shadow: 0 0 1rem var(gray);
 }
 
 .header.sticky {
@@ -73,6 +84,76 @@ section {
   display: none;
 }
 
+/* Theme switch */
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.switch-label img {
+  width: 38px;
+  height: 30px;
+}
+
+/* Estilos para ocultar el checkbox */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.switch-container {
+  position: relative;
+  width: 56px;
+  height: 32px;
+  margin-left: 10px;
+}
+
+.switch-background {
+  background-color: #f48f09; /* Gris */
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.switch-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-color: #ffbf01;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  transition: transform 0.3s ease;
+}
+
+/* Estilos para el tema oscuro */
+body.dark-mode .light-icon {
+  opacity: 0;
+}
+
+body.dark-mode .dark-icon {
+  opacity: 1;
+}
+
+body.dark-mode .switch-background {
+  background-color: #073349; /* Gris claro */
+}
+
+body.dark-mode .switch-indicator {
+  transform: translateX(24px);
+  background-color: #d7eaf5;
+}
+
+/* Home */
 .home {
   display: flex;
   justify-content: center;
@@ -148,7 +229,7 @@ span {
   border-radius: 4rem;
   box-shadow: 0 0 1rem var(--main-color);
   font-size: 1.6rem;
-  color: var(--second-bg-color);
+  color: var(--color-text-botton);
   letter-spacing: 0.1rem;
   font-weight: 600;
   transition: 0.5s ease;
