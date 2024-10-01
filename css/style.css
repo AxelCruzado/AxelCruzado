@@ -43,7 +43,7 @@ section {
   padding: 10rem 9% 2rem;
 }
 .header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -624,6 +624,13 @@ span {
   .experience-image img {
     max-width: 40%;
   }
+  .modal-content {
+    margin-top: 10%;
+  }
+  .close{
+    left: 85%;
+    top:5%
+  }
 }
 
 @media (max-width: 991px) {
@@ -651,10 +658,11 @@ span {
     padding: 2rem 4%;
   }
   .modal-content {
-    display: flex;
-    margin-top: 20%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 10%;
+  }
+  .close{
+    left: 85%;
+    top:5%
   }
   .portfolio-container {
     grid-template-columns: repeat(2, 1fr);
@@ -802,12 +810,12 @@ span {
   }
   .modal-content {
     display: flex;
-    margin-top: 22%;
+    margin-top: 15%;
     margin-left: auto;
     margin-right: auto;
   }
   .close {
-    top: 10%;
+    top: 7%;
   }
 }
 
@@ -831,6 +839,13 @@ span {
     text-align: center;
     margin: 0;
   }
+  .modal-content {
+    margin-top: 15%;
+  }
+  .close{
+    top:8%;
+    left: 90%;
+  }
 }
 
 @media (max-width: 450px) {
@@ -847,6 +862,14 @@ span {
   }
   .footer-iconTop{
     padding-left: 90%;
+  }
+
+  .modal-content {
+    margin-top: 50%;
+  }
+  .close{
+    top:15%;
+    left: 90%;
   }
 }
 
