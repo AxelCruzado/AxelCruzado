@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portafolio | Cruzado Alegre Axel</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
     <!-- box icons -->
     <link
@@ -99,15 +100,16 @@
         <h3>Junior Developer & University Student</h3>
         <p>
           Actualmente soy estudiante universitario en la etapa final de mi
-          carrera en Ingeniería de Sistemas e Informática, persiguiendo
+          carrera en Ingeniería de Sistemas e Informática de la Universidad Nacional del Santa, persiguiendo
           activamente mi pasión para la tecnología. Como desarrollador junior,
           tengo experiencia práctica en Creación de aplicaciones web dinámicas y
-          responsivas. mi trabajo gira en torno al diseño y desarrollo de
+          responsivas, mi trabajo gira entorno al diseño y desarrollo de
           soluciones utilizando un conjunto diverso de tecnologías modernas.
         </p>
         <p>
           Con una base sólida en desarrollo tanto frontend como backend, Estoy
-          bien versado en la creación de interfaces fáciles de usar y robustas.
+          bien versado en la creación de interfaces fáciles de usar y robustas,
+          lo cual me permite aplicar mis habilidades de programación y
           lógica de aplicación. Tengo muchas ganas de seguir creciendo en el
           campo tecnológico, contribuyendo a proyectos innovadores y
           manteniéndose a la vanguardia avances tecnológicos.
@@ -382,46 +384,55 @@
           <p>I create web pages using HTML, CSS, and Javascript.</p>
           <a href="#" class="btn">Read More</a>
         </div>
-
+      
         <div class="services-box">
-          <i class="bx bx-paint"></i>
-          <h3>Graphic Design</h3>
-          <p>I create web pages using HTML, CSS, and Javascript.</p>
+          <i class="bx bx-shield-alt-2"></i>
+          <h3>Cybersecurity</h3>
+          <p>I implement security strategies to protect systems and data from cyber threats.</p>
           <a href="#" class="btn">Read More</a>
         </div>
-
+      
         <div class="services-box">
-          <i class="bx bx-laptop"></i>
-          <h3>Digital Marketing</h3>
-          <p>I create web pages using HTML, CSS, and Javascript.</p>
+          <i class="bx bx-network-chart"></i>
+          <h3>Network Administration</h3>
+          <p>I manage and optimize computer networks to ensure seamless communication and connectivity.</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      
+        <div class="services-box">
+          <i class="bx bx-terminal"></i>
+          <h3>Software Development</h3>
+          <p>I design and develop software solutions using various programming languages and frameworks.</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      
+        <div class="services-box">
+          <i class="bx bx-server"></i>
+          <h3>IT Consulting</h3>
+          <p>I provide expert advice on optimizing technology infrastructure and solutions for businesses.</p>
           <a href="#" class="btn">Read More</a>
         </div>
       </div>
+      
     </section>
 
     <!-- contact section design -->
     <section class="contact" id="contact">
       <h2 class="heading">Contact <span>Me!</span></h2>
-
-      <form action="#">
-        <div class="input-box">
-          <input type="text" placeholder="Full Name" />
-          <input type="email" placeholder="Email Address" />
-        </div>
-        <div class="input-box">
-          <input type="number" placeholder="Mobile Number" />
-          <input type="text" placeholder="Email Subject" />
-        </div>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="Your Message"
-        ></textarea>
-        <input type="submit" value="Send Message" class="btn" />
+  
+      <form id="contact-form">
+          <div class="input-box">
+              <input type="text" id="name" placeholder="Nombre Completo" required />
+              <input type="email" id="email" placeholder="Correo" required />
+          </div>
+          <div class="input-box">
+              <input type="number" id="mobile" placeholder="Celular" />
+              <input type="text" id="subject" placeholder="Asunto" value="Portafolio" required />
+          </div>
+          <textarea id="message" cols="30" rows="10" placeholder="Tu Mensaje" required></textarea>
+          <input type="submit" value="Enviar" class="btn" />
       </form>
-    </section>
+  </section>
 
     <!-- footer design -->
 
@@ -444,5 +455,6 @@
 
     <!-- custom js -->
     <script src="js/script.js"></script>
+
   </body>
 </html>

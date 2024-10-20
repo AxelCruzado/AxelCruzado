@@ -5,7 +5,6 @@ let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
 /* Theme Dark */
-
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
@@ -68,7 +67,7 @@ const typed = new Typed('.multiple-text', {
     backSpeed: 100,
     backDelay: 1000,
     loop: true
-})
+});
 
 /*==================== open image ====================*/
 // Obtener el modal
@@ -98,3 +97,42 @@ modal.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+/*==================== EmailJS integration ====================*/
+(function() {
+    // Inicializar EmailJS con tu user ID
+    emailjs.init("nXENJ4GfmZFzLKlbj");
+  
+    // Seleccionar el formulario de contacto
+    const contactForm = document.getElementById('contact-form');
+  
+    // Escuchar el evento de envío del formulario
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevenir el comportamiento por defecto
+  
+      console.log('Formulario enviado'); // Para verificar que se está enviando el formulario
+  
+      // Recoger los datos del formulario
+      const templateParams = {
+        from_name: document.getElementById('name').value,
+        from_email: document.getElementById('email').value,
+        mobile: document.getElementById('mobile').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value,
+      };
+  
+      console.log('Template Params:', templateParams); // Para verificar los datos recogidos
+  
+      // Enviar el correo usando EmailJS
+      console.log('Enviando correo...'); // Para verificar que se está llamando a la función de envío
+      emailjs.send("service_a6hoc0i", "template_tt85pvm", templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert("¡Tu mensaje ha sido enviado con éxito!");
+          contactForm.reset(); // Opcional: reiniciar el formulario después del envío
+        }, function(error) {
+          console.error('FAILED...', error);
+          alert("Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo.");
+        });
+    });
+  })();
