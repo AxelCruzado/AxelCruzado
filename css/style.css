@@ -18,8 +18,114 @@
   --text-color: #0a0000;
   --main-color: rgb(41, 151, 235);
   --color-text-botton:#fff;
+  --shadow-color: rgba(0, 0, 0, 0.1); /* NEW: Added for consistent shadows */
 }
 
+/* NEW: Carousel styles for Projects section with fixed image size */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  position: relative;
+  display: none;
+  text-align: center; /* Center images */
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel-item img {
+  width: auto;
+  height: 500px; /* Fixed height for all images */
+  max-width: 100%; /* Ensure width doesn't exceed container */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  border-radius: 0.5rem;
+  display: block;
+  margin: 0 auto; /* Center image horizontally */
+}
+
+.carousel-item a {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--main-color);
+  color: var(--color-text-botton);
+  border: none;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control:hover {
+  opacity: 1;
+}
+
+.carousel-control.prev {
+  left: 1rem;
+}
+
+.carousel-control.next {
+  right: 1rem;
+}
+
+/* Ensure existing project styles work with carousel */
+.project-image {
+  flex: 0 0 40%;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .project-image {
+    flex: 0 0 100%;
+  }
+  .carousel-item img {
+    height: 550px; /* Reduced height for smaller screens */
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 500px; /* Further reduced height for mobile */
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 450px) {
+  .carousel-item img {
+    height: 400px; /* Smallest height for very small screens */
+    max-width: 100%;
+  }
+  .carousel-control {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+}
 /* Colores para el modo oscuro */
 body.dark-mode {
   --bg-color: #1f242d;
@@ -27,6 +133,7 @@ body.dark-mode {
   --text-color: #fff;
   --main-color: #0ef;
   --color-text-botton:#000;
+  --shadow-color: rgba(255, 255, 255, 0.1); /* NEW: Adjusted for dark mode */
 }
 
 html {
@@ -378,6 +485,91 @@ span {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
+/* NEW: Styles for Projects section (modeled after Experience for consistency) */
+.projects {
+  background: var(--second-bg-color);
+}
+
+.projects h2 {
+  margin-bottom: 4rem;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.project-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.2rem 0.5rem var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2rem var(--shadow-color);
+}
+
+.project-content {
+  flex: 1;
+  padding-right: 2rem;
+  color: black;
+}
+
+.project-content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.project-content h4 {
+  font-size: 1.8rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.project-content p {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Reuse .tech-item from skills; no changes needed */
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-image {
+  flex: 0 0 40%; /* Adjusted for better proportion */
+  position: relative;
+  text-align: center;
+}
+
+
+
+.project-image a {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
 .services h2 {
   margin-bottom: 5rem;
 }
@@ -388,11 +580,12 @@ span {
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+  color: black;
 }
 
 .services-container .services-box {
   flex: 1 1 30rem;
-  background: var(--second-bg-color);
+  background: #f8f9fa;
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
   text-align: center;
@@ -408,6 +601,7 @@ span {
 .services-box i {
   font-size: 7rem;
   color: var(--main-color);
+  
 }
 
 .services-box h3 {
@@ -419,8 +613,11 @@ span {
   margin: 1rem 0 3rem;
 }
 
-.portfolio {
+.services{
   background: var(--second-bg-color);
+}
+.portfolio {
+  background: var(--bg-color);
 }
 
 .portfolio h2 {
@@ -542,7 +739,7 @@ span {
 }
 
 .contact {
-  background: var(--second-bg-color);
+  background: var(--bg-color);
 }
 .contact form {
   max-width: 70rem;
@@ -589,7 +786,7 @@ span {
   align-items: center;
   flex-wrap: wrap;
   padding: 2rem 9%;
-  background: var(--primary-bg-color);
+  background: var(--second-bg-color);
 }
 
 .footer-text p {
@@ -622,6 +819,9 @@ span {
     font-size: 55%;
   }
   .experience-image img {
+    max-width: 40%;
+  }
+  .project-image img { /* NEW */
     max-width: 40%;
   }
   .modal-content {
@@ -669,6 +869,16 @@ span {
   }
   .experience-image img {
     max-width: 65%;
+  }
+  .project-image img { /* NEW */
+    max-width: 65%;
+  }
+  .project-box { /* NEW: Stack vertically on smaller screens */
+    flex-direction: column;
+  }
+  .project-content {
+    padding-right: 0;
+    margin-bottom: 2rem;
   }
 }
 
@@ -770,6 +980,17 @@ span {
   }
 
   .experience-image img {
+    max-width: 80%;
+  }
+  .project-box { /* NEW */
+    flex-direction: column;
+    text-align: center;
+  }
+  .project-content {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  .project-image img { /* NEW */
     max-width: 80%;
   }
   .services h2 {
@@ -912,5 +1133,5 @@ span {
     border-radius: 100%;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   }
-  
+
 }

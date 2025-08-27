@@ -4,6 +4,23 @@ let navbar = document.querySelector('.navbar');
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
+// NEW: Add active class to nav links on scroll (was missing in original)
+window.onscroll = () => {
+  sections.forEach(sec => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute('id');
+
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelector(`header nav a[href="#${id}"]`).classList.add('active');
+    }
+  });
+};
+
 /* Theme Dark */
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
@@ -59,6 +76,12 @@ sr.reveal(`.home-content p, .about-content`, {
     interval: 100
 });
 
+// NEW: Add reveal for projects section
+sr.reveal(`.projects-container .project-box`, {
+    origin: 'bottom',
+    interval: 200
+});
+
 /*==================== typed js ====================*/
 
 const typed = new Typed('.multiple-text', {
@@ -78,7 +101,7 @@ var modalImg = document.getElementById("modalImage");
 
 // Función para abrir el modal al hacer clic en el ícono
 function openImage(element) {
-  var imgSrc = element.parentElement.previousElementSibling.src;
+  var imgSrc = element.parentElement.querySelector('img').src; // UPDATED: Adjusted to work with project-image structure
   modal.style.display = "block";
   modalImg.src = imgSrc;
 }
@@ -96,6 +119,23 @@ modal.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+
+function changeSlide(button, direction) {
+  const carousel = button.closest('.carousel');
+  const carouselInner = carousel.querySelector('.carousel-inner');
+  const items = carousel.querySelectorAll('.carousel-item');
+  const totalItems = items.length;
+  let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
+
+  // Remove active class from current item
+  items[currentIndex].classList.remove('active');
+
+  // Calculate new index
+  currentIndex = (currentIndex + direction + totalItems) % totalItems;
+
+  // Add active class to new item
+  items[currentIndex].classList.add('active');
 }
 
 /*==================== EmailJS integration ====================*/
